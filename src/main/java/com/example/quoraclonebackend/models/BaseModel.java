@@ -9,6 +9,8 @@ import java.util.Date;
 
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
+@Setter
+@Getter
 
 public class BaseModel {
     @Id

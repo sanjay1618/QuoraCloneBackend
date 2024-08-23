@@ -1,11 +1,13 @@
 package com.example.quoraclonebackend.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,6 +22,6 @@ public class Topic extends BaseModel{
     private String topicName;
 
     @ManyToMany(mappedBy="topics")
-    @JsonBackReference
-    private Set<Question> questions;
+    @JsonIgnore
+    private List<Question> questions;
 }

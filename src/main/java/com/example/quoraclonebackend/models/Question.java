@@ -1,5 +1,6 @@
 package com.example.quoraclonebackend.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -28,7 +29,10 @@ public class Question extends BaseModel{
     @JsonManagedReference
     private List<Topic> topics;
 
+
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User user;
 
 }

@@ -6,24 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class TopicService implements CommandLineRunner {
+public class TopicService {
     private final TopicRepository topicRepository;
 
     @Autowired
     public TopicService(TopicRepository topicRepository) {
         this.topicRepository = topicRepository;
     }
-    @Override
-    public void run(String... args) throws Exception {
-//        Topic topic = Topic.builder()
-//                .topicName("Java")
-//                .build();
-//        topicRepository.save(topic);
-//
-//        Topic topic1 = Topic.builder()
-//                .topicName("Python")
-//                .build();
-//        topicRepository.save(topic1);
+
+    public Topic createTopic(Topic topic) {
+        System.out.println(topic.getTopicName());
+        return topicRepository.save(topic);
     }
+
+    public List<Topic> getAllTopics() {
+        return topicRepository.findAll();
+    }
+
 }

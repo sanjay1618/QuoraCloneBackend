@@ -47,7 +47,9 @@ public class QuestionService {
                 .user(user)
                 .topics(topic)
                 .build();
-        return questionRepository.save(question);
+        Question questionSaved = questionRepository.save(question);
+        System.out.println(questionSaved.getUser().getId());
+        return questionSaved;
     }
 
 }
